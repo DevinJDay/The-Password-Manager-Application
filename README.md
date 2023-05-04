@@ -13,17 +13,16 @@ Please add a paragraph or two overviewing the objectives of the assignment.
 https://github.com/{YOUR_USERNAME}/cs-665-assignment-{ASSIGNMENT_NUMBER}
 
 # Implementation Description 
+The Password Manager Application is a software tool that enables users to securely store and manage their passwords and other sensitive information. This application is designed to help users create strong passwords, organize them into categories, and access them easily and securely.
 
+The Password Manager Application is designed using three design patterns: Builder, Singleton, and Observer.
 
-For each assignment, please answer the following:
+Builder pattern: The Builder pattern is used to create Password and Category objects with custom parameters. The PasswordBuilder and CategoryBuilder classes provide a convenient way to create objects with different parameters, without having to specify them in the constructor. The Builder pattern helps to simplify the creation of objects with complex parameter sets.
 
-- Explain the level of flexibility in your implementation, including how new object types can
-be easily added or removed in the future.
-- Discuss the simplicity and understandability of your implementation, ensuring that it is
-easy for others to read and maintain.
-- Describe how you have avoided duplicated code and why it is important.
-- If applicable, mention any design patterns you have used and explain why they were
-chosen.
+Singleton pattern: The Singleton pattern is used to ensure that there is only one instance of the PasswordManager class in the application. The PasswordManager class is the central class that manages the storage and retrieval of passwords and categories. By using the Singleton pattern, we can ensure that there is only one instance of the PasswordManager class, which can be accessed from anywhere in the application.
+
+Observer pattern: The Observer pattern is used to notify Password objects when the PasswordManager changes. The PasswordManager class implements the ObserverSubject interface, which defines the registerObserver(), removeObserver(), and notifyObservers() methods. The Password class implements the Observer interface, which defines the update() method. When the PasswordManager changes, it notifies all Password observers, which can then update themselves accordingly. The Observer pattern helps to keep the Password objects up-to-date with the latest changes in the PasswordManager.
+
 
 
 # Maven Commands

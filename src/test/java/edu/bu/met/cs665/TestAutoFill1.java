@@ -14,7 +14,7 @@ public class TestAutoFill1 {
     @org.junit.Test
     public void testAutoFill1(){
         // Create a new PasswordManager instance
-        PasswordManager passwordManager = PasswordManager.getInstance();
+        PasswordManager passwordManager4 = PasswordManager.getInstance();
         PasswordBuilder PB = new PasswordBuilder();
         CategoryBuilder CB = new CategoryBuilder();
 
@@ -37,13 +37,13 @@ public class TestAutoFill1 {
                 .build();
 
         // Attach the Password object as an observer to the PasswordManager
-        passwordManager.attach(password1);
+        passwordManager4.attach(password1);
 
         // Add the Password object to the PasswordManager
-        passwordManager.addPassword(password1);
+        passwordManager4.addPassword(password1);
 
         // Notify the observers of the PasswordManager
-        passwordManager.notifyObservers();
+        passwordManager4.notifyObservers();
 
 
 
@@ -61,25 +61,25 @@ public class TestAutoFill1 {
                 .setCategory(category1)
                 .build();
 
-        passwordManager.addPassword(password3);
-        passwordManager.attach(password3);
+        passwordManager4.addPassword(password3);
+        passwordManager4.attach(password3);
 
 
 
 
         // Notify the observers of the PasswordManager
-        passwordManager.notifyObservers();
+        passwordManager4.notifyObservers();
 
         //Generate random passwords
-        Password newPassword = passwordManager.generatePassword();
+        Password newPassword = passwordManager4.generatePassword();
         password1 = PB
                 .setEncryptedPassword(newPassword.getEncryptedPassword())
                 .setEncryptionAlgorithm(newPassword.getEncryptionAlgorithm())
                 .build();
-        passwordManager.addPassword(password1);
+        passwordManager4.addPassword(password1);
 
         // Notify the observers of the PasswordManager
-        passwordManager.notifyObservers();
+        passwordManager4.notifyObservers();
 
         // Creating new password object for another username but the same website
         Password password2 = PB
@@ -90,24 +90,22 @@ public class TestAutoFill1 {
                 .build();
 
         //Attach the new password2 as a new observer
-        passwordManager.attach(password2);
+        passwordManager4.attach(password2);
 
         //Add the new password2 object to the PasswordManager
-        passwordManager.addPassword(password2);
+        passwordManager4.addPassword(password2);
 
 
         // Notify the observers of the PasswordManager
-        passwordManager.notifyObservers();
+        passwordManager4.notifyObservers();
 
         //auto filling login credentials for ""gmail.com
         //should displays 2 passwords for 2 usernames
-        passwordManager.autofillCredentials("gmail.com");
-        assertEquals(4, passwordManager.getPasswords().size());
-        assertEquals(2, passwordManager.getObservers().size());
-
-
-
+        passwordManager4.autofillCredentials("gmail.com");
+        assertEquals(4, passwordManager4.getPasswords().size());
+        assertEquals(2, passwordManager4.getObservers().size());
 
     }
+
 
 }

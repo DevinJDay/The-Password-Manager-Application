@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import edu.bu.met.cs665.Category.*;
 import edu.bu.met.cs665.EncryptionAlgorithms.AesEncryptionAlgorithm;
 import edu.bu.met.cs665.Password.*;
+import org.junit.Test;
 
 /**
  * Write some Unit tests for your program like the examples below.
@@ -19,7 +20,7 @@ public class TestBuilders {
     @org.junit.Test
     public void  TestBuilders(){
         // Create a new PasswordManager instance
-        PasswordManager passwordManager = PasswordManager.getInstance();
+        PasswordManager passwordManager1 = PasswordManager.getInstance();
         PasswordBuilder PB = new PasswordBuilder();
         CategoryBuilder CB = new CategoryBuilder();
 
@@ -44,6 +45,8 @@ public class TestBuilders {
         assertEquals("Blue", password1.getCategory().getColor());
 
     }
+
+
 
 
 
