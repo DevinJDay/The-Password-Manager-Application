@@ -17,6 +17,7 @@ import edu.bu.met.cs665.Password.*;
 
 /**
  * This is the Main class.
+ * Please see the comments at each section below.
  */
 public class Main {
 
@@ -28,6 +29,7 @@ public class Main {
     PasswordManager passwordManager = PasswordManager.getInstance();
     PasswordBuilder PB = new PasswordBuilder();
     CategoryBuilder CB = new CategoryBuilder();
+
 
     // Create a new Category using the CategoryBuilder
     Category category1 = CB
@@ -57,43 +59,34 @@ public class Main {
     passwordManager.notifyObservers();
 
 
-
-
-    // Update the category and password objects
-    category1 = CB
-            .setDescription("Email accounts - updated")
+    // Create a new Category using the CategoryBuilder
+    Category category2 = CB
+            .setName("Email")
+            .setDescription("Email accounts - new")
             .setColor("Green")
             .build();
 
 
-    Password password3 = PB
-            .setEncryptedPassword("devinIsGreat")
-            .setEncryptionAlgorithm(new ShaEncryptionAlgorithm())
-            .setCategory(category1)
-            .build();
 
+
+
+
+    //Update password by generating random passwords
+    Password newPassword = passwordManager.generatePassword();
+    Password password3 = PB
+            .setEncryptedPassword(newPassword.getEncryptedPassword())
+            .setEncryptionAlgorithm(newPassword.getEncryptionAlgorithm())
+            .setCategory(category2)
+            .build();
     passwordManager.addPassword(password3);
 
     // Attach the Password object as an observer to the PasswordManager
     //expecting "Same observer existed!!"
     passwordManager.attach(password3);
 
-
-
-
     // Notify the observers of the PasswordManager
     passwordManager.notifyObservers();
 
-    //Generate random passwords
-    Password newPassword = passwordManager.generatePassword();
-    password1 = PB
-            .setEncryptedPassword(newPassword.getEncryptedPassword())
-            .setEncryptionAlgorithm(newPassword.getEncryptionAlgorithm())
-            .build();
-    passwordManager.addPassword(password1);
-
-    // Notify the observers of the PasswordManager
-    passwordManager.notifyObservers();
 
     // Creating new password object for another username but the same website
     Password password2 = PB
@@ -107,12 +100,6 @@ public class Main {
     passwordManager.attach(password2);
     passwordManager.addPassword(password2);
 
-
-    // Notify the observers of the PasswordManager
-    passwordManager.notifyObservers();
-
-    //auto filling login credentials
-    passwordManager.autofillCredentials("gmail.com");
 
     // Creating new password object for another website
     Password password4 = PB
@@ -130,6 +117,9 @@ public class Main {
     // Notify the observers of the PasswordManager
     passwordManager.notifyObservers();
 
+
+    //auto filling login credentials
+    passwordManager.autofillCredentials("gmail.com");
     passwordManager.autofillCredentials("Yahoo.com");
 
 
